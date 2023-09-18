@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sample Website</title>
+        <style>
+            /* Styles */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            .nav {
+                display: flex;
+                justify-content: center;
+                padding: 1rem 2rem;
+                background-color: #fff;
+                position: relative;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 20px;
+            }
+
+            .nav a {
+                color: #333;
+                text-decoration: none;
+            }
+
+            .hamburger-menu {
+                position: absolute;
+                right: 2rem;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+            }
+
+            .hamburger-menu div {
+                width: 25px;
+                height: 3px;
+                background-color: #333;
+                margin: 2px 0;
+            }
+
+            .hero {
+                background-color: #ffcd29;
+                height: 400px;
+                position: relative;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+                background-color: white;
+                border-radius: 50%;
+                position: absolute;
+                top: 2vw;
+                left: 2vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero button {
+                padding: 10px 20px;
+                margin: 2vw 0vw;
+                border: none;
+                background-color: #fff;
+                color: #333;
+                cursor: pointer;
+            }
+
+            .content {
+                flex: 1;
+                padding: 2rem;
+            }
+
+            .article-section {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-bottom: 2rem;
+            }
+
+            .card {
+                height: 350px;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-weight: bold;
+                font-size: larger;
+            }
+
+            .black-border {
+                border: 1px solid black;
+            }
+
+            .blue-background {
+                width: 30%;
+                height: 700px;
+                background-color: #bde3ff;
+                color: white;
+            }
+
+            .yellow-btn {
+                background-color: #fff;
+                padding: 1vw 1.5vw;
+                color: #333;
+            }
+
+            .card-text {
+                margin-top: 10px;
+            }
+
+            .footer {
+                background-color: #bde3ff;
+                padding: 1rem 2rem;
+                text-align: center;
+            }
+            .footer-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+                justify-items: center;
+            }
+
+            .footer a {
+                text-decoration: none;
+                color: #333;
+            }
+            .popup {
+                display: none;
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                z-index: 2;
+            }
+
+            .popup-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                /* background-color: #fff; */
+                padding: 20px;
+                text-align: center;
+                font-size: 100px;
+            }
+
+            .popup-links {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <div class="nav">
+            <div class="nav-links">
+                <a href="#rec">Recreation</a>
+                <a href="#transpo">Transportation</a>
+                <a href="#lodging">Lodging</a>
+            </div>
+            <div class="hamburger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="logo">Your Logo</div>
+            <!-- <button>Click Me</button> -->
+        </div>
+
+        <!-- Popup for Hamburger Menu -->
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <ul class="popup-links">
+                    <li><a href="#rec">Recreation</a></li>
+                    <li><a href="#transpo">Transportation</a></li>
+                    <li><a href="#lodging">Lodging</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="content">
+            <!-- Article Section 1 with black borders -->
+            <div id="rec" class="article-section">
+                <div class="card-container">
+                    <div class="card black-border">Sites</div>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                </div>
+
+                <div class="card-container">
+                    <div class="card black-border">Restaurants</div>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                </div>
+
+                <div class="card-container">
+                    <div class="card black-border">Events</div>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Article Section 3 with blue backgrounds -->
+            <div id="transpo" class="article-section">
+                <div class="card blue-background">
+                    <div class="yellow-btn">Bus</div>
+                </div>
+                <div class="card blue-background">
+                    <div class="yellow-btn">Car</div>
+                </div>
+                <div class="card blue-background">
+                    <div class="yellow-btn">Train</div>
+                </div>
+                <!-- <div class="card blue-background">
+                    <button>Button</button>
+                </div>
+                <div class="card blue-background">
+                    <button>Button</button>
+                </div>
+                <div class="card blue-background">
+                    <button>Button</button>
+                </div> -->
+            </div>
+            <div id="lodging" class="article-section">
+                <div class="card-container">
+                    <div class="card black-border">Hotels</div>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                </div>
+
+                <div class="card-container">
+                    <div class="card black-border">Hostels</div>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                </div>
+
+                <div class="card-container">
+                    <div class="card black-border">Campsites</div>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse lacinia odio vitae vestibulum.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+            <div class="footer">
+                <div class="footer-grid">
+                    <a href="#">SiteMap</a>
+                    <a href="#">Recreation</a>
+                    <a href="#">Transportation</a>
+                    <a href="#">Legal</a>
+                    <a href="#">Lodging</a>
+                    <a href="#sites">Sites</a>
+                    <a href="#">Contact </a>
+                    <a href="#restaurants">Restaurants</a>
+
+                    <a href="#events">Events</a>
+                </div>
+            </div>
+
+        <script>
+            // Get the elements
+            const hamburgerMenu = document.querySelector(".hamburger-menu");
+            const popup = document.getElementById("popup");
+            const closeBtn = document.querySelector(".close");
+
+            // Open the popup when hamburger menu is clicked
+            hamburgerMenu.addEventListener("click", () => {
+                popup.style.display = "block";
+            });
+
+            // Close the popup
+            closeBtn.addEventListener("click", () => {
+                popup.style.display = "none";
+            });
+        </script>
+    </body>
+</html>
