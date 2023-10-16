@@ -1,448 +1,506 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Island Vacation Retreats</title>
+        <style>
+            /* Styles from the original code... */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
 
+            .nav {
+                display: flex;
+                justify-content: center;
+                padding: 1rem 2rem;
+                background-color: #fff;
+                position: relative;
+            }
 
+            .nav-links {
+                display: flex;
+                gap: 20px;
+            }
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sample Website</title>
-    <style>
-        /* Styles from the original code... */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+            .nav a {
+                color: #333;
+                text-decoration: none;
+            }
 
-        .nav {
-            display: flex;
-            justify-content: center;
-            padding: 1rem 2rem;
-            background-color: #fff;
-            position: relative;
-        }
+            .hamburger-menu {
+                position: absolute;
+                right: 2rem;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+            }
 
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
+            .hamburger-menu div {
+                width: 25px;
+                height: 3px;
+                background-color: #333;
+                margin: 2px 0;
+            }
 
-        .nav a {
-            color: #333;
-            text-decoration: none;
-        }
+            .hero {
+                background-image: url("banner.jpg");
+                background-size: cover;
+                background-position: center;
+                height: 400px;
+                position: relative;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+            }
 
-        .hamburger-menu {
-            position: absolute;
-            right: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-        }
+            .logo {
+                width: 100px;
+                height: 100px;
+                background-color: white;
+                border-radius: 50%;
+                position: absolute;
+                top: 2vw;
+                left: 2vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
-        .hamburger-menu div {
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            margin: 2px 0;
-        }
+            .hero button {
+                padding: 10px 20px;
+                margin: 2vw 0vw;
+                border: none;
+                background-color: #fff;
+                color: #333;
+                cursor: pointer;
+            }
 
-        .hero {
-            background-color: #ffcd29;
-            height: 400px;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-        }
+            .content {
+                flex: 1;
+                padding: 2rem;
+            }
 
-        .logo {
-            width: 100px;
-            height: 100px;
-            background-color: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 2vw;
-            left: 2vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+            .article-section {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-bottom: 2rem;
+            }
 
-        .hero button {
-            padding: 10px 20px;
-            margin: 2vw 0vw;
-            border: none;
-            background-color: #fff;
-            color: #333;
-            cursor: pointer;
-        }
+            .card {
+                height: 350px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-weight: bold;
+                font-size: larger;
+            }
 
-        .content {
-            flex: 1;
-            padding: 2rem;
-        }
+            .black-border {
+                border: 1px solid black;
+            }
 
-        .article-section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-        }
+            .blue-background {
+                width: 30%;
+                height: 700px;
+                background-color: #bde3ff;
+                color: white;
+            }
 
-        .card {
-            height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-weight: bold;
-            font-size: larger;
-        }
+            .yellow-btn {
+                background-color: #fff;
+                padding: 1vw 1.5vw;
+                color: #333;
+            }
 
-        .black-border {
-            border: 1px solid black;
-        }
+            .card-text {
+                margin-top: 10px;
+            }
 
-        .blue-background {
-            width: 30%;
-            height: 700px;
-            background-color: #bde3ff;
-            color: white;
-        }
+            .footer {
+                background-color: #bde3ff;
+                padding: 1rem 2rem;
+                text-align: center;
+            }
 
-        .yellow-btn {
-            background-color: #fff;
-            padding: 1vw 1.5vw;
-            color: #333;
-        }
+            .footer-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+                justify-items: center;
+            }
 
-        .card-text {
-            margin-top: 10px;
-        }
+            .footer a {
+                text-decoration: none;
+                color: #333;
+            }
 
-        .footer {
-            background-color: #bde3ff;
-            padding: 1rem 2rem;
-            text-align: center;
-        }
+            .popup {
+                display: none;
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                z-index: 2;
+            }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            justify-items: center;
-        }
+            .popup-content {
+                position: absolute;
+                width: 50%;
+                height: 50%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #333;
+                padding: 20px;
+                text-align: center;
+                font-size: 2vw;
+            }
 
-        .footer a {
-            text-decoration: none;
-            color: #333;
-        }
+            .popup-links {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
 
-        .popup {
-            display: none;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 2;
-        }
+            .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+            }
 
-        .popup-content {
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #333;
-            padding: 20px;
-            text-align: center;
-            font-size: 2vw;
-        }
+            .card-container {
+                width: 30%;
+            }
 
-        .popup-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+            /* Modifications for the Contact form */
+            .contact-form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+            }
 
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
+            .contact-form input[type="text"],
+            .contact-form input[type="email"],
+            .contact-form textarea {
+                width: 80%;
+                padding: 10px;
+                margin: 10px 0;
+            }
 
-        .card-container {
-            width: 30%;
-        }
+            .contact-form input[type="submit"] {
+                cursor: pointer;
+                background-color: #ffcd29;
+                border: none;
+                padding: 10px 15px;
+                font-size: 1em;
+            }
+            /* Background Images for each card */
+            .card[data-topic="festivals"] {
+                background-image: url("./festivals.jpg");
+                background-size: cover;
+                background-position: center center;
+            }
 
-        /* Modifications for the Contact form */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: center;
-            justify-content: center;
-        }
+            .card[data-topic="restaurants"] {
+                background-image: url("./restaurant.png");
+                background-size: cover;
+                background-position: center center;
+            }
 
-        .contact-form input[type="text"],
-        .contact-form input[type="email"],
-        .contact-form textarea {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-        }
+            .card[data-topic="beaches"] {
+                background-image: url("beaches.jpeg");
+                background-size: cover;
+                background-position: center center;
+            }
 
-        .contact-form input[type="submit"] {
-            cursor: pointer;
-            background-color: #ffcd29;
-            border: none;
-            padding: 10px 15px;
-            font-size: 1em;
-        }
-    </style>
-</head>
+            .card[data-topic="hotels"] {
+                background-image: url("hotels.jpeg");
+                background-size: cover;
+                background-position: center center;
+            }
 
-<body>
-    <!-- Navigation -->
-    <div id="nav" class="nav">
-        <div class="nav-links">
-            <a href="#rec">Recreation</a>
-            <a href="#transpo">Transportation</a>
-            <a href="#lodging">Lodging</a>
-        </div>
-        <div class="hamburger-menu">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
+            .card[data-topic="hostels"] {
+                background-image: url("hostels.jpg");
+                background-size: cover;
+                background-position: center center;
+            }
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <!-- <div class="logo">Your Logo</div> -->
-        <!-- <button>Click Me</button> -->
-    </div>
+            .card[data-topic="camping"] {
+                background-image: url("camping.jpg");
+                background-size: cover;
+                background-position: center center;
+            }
+        </style>
+    </head>
 
-    <!-- Popup for Hamburger Menu -->
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close">&times;</span>
-            <ul class="popup-links">
-                <li><a href="#rec">Recreation</a></li>
-                <li><a href="#transpo">Transportation</a></li>
-                <li><a href="#lodging">Lodging</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Popup for Contact -->
-    <div id="contact-popup" class="popup">
-        <div class="popup-content">
-            <span class="close contact-close">&times;</span>
-            <form class="contact-form">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Message" required></textarea>
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-    </div>
-
-    <!-- Scrollable Content -->
-    <div class="content">
-        <!-- Article Section 1 with black borders -->
-        <div id="rec" class="article-section">
-            <div class="card-container">
-                <div class="card black-border">Sites</div>
-                <!-- <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p> -->
+    <body>
+        <!-- Navigation -->
+        <div id="nav" class="nav">
+            <div class="nav-links">
+                <a href="#rec">Recreation</a>
+                <a href="#transpo">Transportation</a>
+                <a href="#lodging">Lodging</a>
             </div>
-
-            <div class="card-container">
-                <div class="card black-border">Restaurants</div>
-                <!-- <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p> -->
-            </div>
-
-            <div class="card-container">
-                <div class="card black-border">Events</div>
-                <!-- <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p> -->
+            <div class="hamburger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
         </div>
 
-        <!-- Article Section 3 with blue backgrounds -->
-        <div id="transpo" class="article-section">
-            <div class="card blue-background">
-                <div class="yellow-btn">Bus</div>
-            </div>
-            <div class="card blue-background">
-                <div class="yellow-btn">Car</div>
-            </div>
-            <div class="card blue-background">
-                <div class="yellow-btn">Train</div>
+        <!-- Hero Section -->
+        <div class="hero">
+            <svg width="100%" height="400px" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <mask id="textMask">
+                        <rect width="100%" height="400px" fill="white"/>
+                        <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="25em" font-weight="bold" fill="black">Taniti</text>
+                    </mask>
+                </defs>
+                <rect width="100%" height="400px" fill="#ffcd29" mask="url(#textMask)"/>
+            </svg>
+        </div>
+
+        <!-- Popup for Hamburger Menu -->
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <ul class="popup-links">
+                    <li><a href="#rec">Recreation</a></li>
+                    <li><a href="#transpo">Transportation</a></li>
+                    <li><a href="#lodging">Lodging</a></li>
+                </ul>
             </div>
         </div>
 
-        <div id="lodging" class="article-section">
-            <div class="card-container">
-                <div class="card black-border">Hotels</div>
-                <!-- <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p> -->
-            </div>
-
-            <div class="card-container">
-                <div class="card black-border">Hostels</div>
-                <!-- <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p> -->
-            </div>
-
-            <div class="card-container">
-                <div class="card black-border">Campsites</div>
-                <!-- <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse lacinia odio vitae vestibulum.
-                </p> -->
+        <!-- Popup for Contact -->
+        <div id="contact-popup" class="popup">
+            <div class="popup-content">
+                <span class="close contact-close">&times;</span>
+                <form class="contact-form">
+                    <input type="text" placeholder="Name" required />
+                    <input type="email" placeholder="Email" required />
+                    <textarea placeholder="Message" required></textarea>
+                    <input type="submit" value="Submit" />
+                </form>
             </div>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <div class="footer-grid">
-            <a href="#">SiteMap</a>
-            <a href="#">Recreation</a>
-            <a href="#">Transportation</a>
-            <a href="#">Legal</a>
-            <a href="#">Lodging</a>
-            <a href="#sites">Sites</a>
-            <a href="#contact-popup">Contact</a>
-            <a href="#restaurants">Restaurants</a>
-            <a href="#events">Events</a>
+        <!-- Scrollable Content -->
+        <div class="content">
+            <!-- Article Section 1 with black borders -->
+            <div id="rec" class="article-section">
+                <div class="card-container">
+                    <div class="card black-border" data-topic="beaches">
+                        Beautiful Beaches
+                    </div>
+                    <p class="card-text">
+                        Discover pristine beaches with golden sands and
+                        crystal-clear waters that beckon you to relax and
+                        unwind.
+                    </p>
+                    <p class="card-text">
+                        Explore hidden coves and enjoy water sports like
+                        snorkeling and surfing in the island's serene coastline.
+                    </p>
+                    <p class="card-text">
+                        Our island offers some of the most breathtaking beaches
+                        where you can soak up the sun and enjoy the sea breeze.
+                    </p>
+                    <p class="card-text">
+                        From family-friendly shores to secluded getaways, our
+                        island has a beach for every traveler's taste.
+                    </p>
+                </div>
+
+                <div class="card-container">
+                    <div class="card black-border" data-topic="restaurants">
+                        Exquisite Cuisine
+                    </div>
+                    <p class="card-text">
+                        Indulge in a culinary journey through our island's
+                        diverse cuisine, featuring fresh seafood and tropical
+                        flavors.
+                    </p>
+                    <p class="card-text">
+                        Savor delicious dishes prepared by local chefs, offering
+                        a taste of the island's rich culinary heritage.
+                    </p>
+                    <p class="card-text">
+                        From beachside cafes to fine dining restaurants, our
+                        island boasts a variety of dining experiences to satisfy
+                        your palate.
+                    </p>
+                    <p class="card-text">
+                        Don't miss the opportunity to try our signature dishes,
+                        infused with island spices and international influences.
+                    </p>
+                </div>
+
+                <div class="card-container">
+                    <div class="card black-border" data-topic="festivals">
+                        Vibrant Festivals
+                    </div>
+                    <p class="card-text">
+                        Immerse yourself in the island's vibrant culture by
+                        joining local festivals and celebrations.
+                    </p>
+                    <p class="card-text">
+                        Experience traditional dance, music, and art that
+                        showcase the unique heritage of our island.
+                    </p>
+                    <p class="card-text">
+                        Our festivals bring the community together, creating
+                        unforgettable memories and a sense of belonging.
+                    </p>
+                    <p class="card-text">
+                        Discover the colorful traditions that make our island a
+                        hub of cultural diversity and joyous festivities.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Article Section 3 with blue backgrounds -->
+            <div id="transpo" class="article-section">
+                <div class="card blue-background">
+                    <div class="yellow-btn">Bus Tours</div>
+                </div>
+                <div class="card blue-background">
+                    <div class="yellow-btn">Car Rentals</div>
+                </div>
+                <div class="card blue-background">
+                    <div class="yellow-btn">Train Adventures</div>
+                </div>
+            </div>
+
+            <div id="lodging" class="article-section">
+                <div class="card-container">
+                    <div class="card black-border" data-topic="hotels">
+                        Luxury Resorts
+                    </div>
+                    <p class="card-text">
+                        Experience the epitome of luxury and comfort at our
+                        island's world-class resorts.
+                    </p>
+                    <p class="card-text">
+                        Enjoy top-notch amenities, stunning views, and
+                        personalized service for an unforgettable stay.
+                    </p>
+                    <p class="card-text">
+                        Relax in style, surrounded by lush landscapes and
+                        exclusive accommodations that cater to your every need.
+                    </p>
+                    <p class="card-text">
+                        Our luxury resorts redefine island living, providing a
+                        sanctuary of relaxation and indulgence.
+                    </p>
+                </div>
+
+                <div class="card-container">
+                    <div class="card black-border" data-topic="hostels">
+                        Cozy Villas
+                    </div>
+                    <p class="card-text">
+                        Escape to charming villas nestled in the heart of our
+                        island, offering privacy and serenity.
+                    </p>
+                    <p class="card-text">
+                        Unwind in your own oasis, complete with a private pool
+                        and personalized services for a tranquil retreat.
+                    </p>
+                    <p class="card-text">
+                        Our cozy villas provide a home away from home,
+                        surrounded by natural beauty and tranquility.
+                    </p>
+                    <p class="card-text">
+                        Experience the perfect blend of comfort and nature in
+                        our island's idyllic villa accommodations.
+                    </p>
+                </div>
+
+                <div class="card-container">
+                    <div class="card black-border" data-topic="camping">
+                        Beachfront Campsites
+                    </div>
+                    <p class="card-text">
+                        Connect with nature and camp under the stars at our
+                        island's picturesque beachfront campsites.
+                    </p>
+                    <p class="card-text">
+                        Fall asleep to the sound of the ocean and wake up to
+                        breathtaking sunrises over the sea.
+                    </p>
+                    <p class="card-text">
+                        Our campsites offer a unique way to experience the
+                        island's natural beauty and serenity.
+                    </p>
+                    <p class="card-text">
+                        Embark on an adventure, roast marshmallows by the
+                        campfire, and create unforgettable memories.
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <script>
-        const hamburgerMenu = document.querySelector(".hamburger-menu");
-        const popup = document.getElementById("popup");
-        const closeBtn = document.querySelector(".close");
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-grid">
+                <a href="#">SiteMap</a>
+                <a href="#">Recreation</a>
+                <a href="#">Transportation</a>
+                <a href="#">Legal</a>
+                <a href="#">Lodging</a>
+                <a href="#rec">Beautiful Beaches</a>
+                <a href="#contact-popup">Contact</a>
+                <a href="#lodging">Exquisite Cuisine</a>
+                <a href="#transpo">Vibrant Festivals</a>
+            </div>
+        </div>
 
-        hamburgerMenu.addEventListener("click", () => {
-            popup.style.display = "block";
-        });
+        <script>
+            const hamburgerMenu = document.querySelector(".hamburger-menu");
+            const popup = document.getElementById("popup");
+            const closeBtn = document.querySelector(".close");
 
-        closeBtn.addEventListener("click", () => {
-            popup.style.display = "none";
-        });
+            hamburgerMenu.addEventListener("click", () => {
+                popup.style.display = "block";
+            });
 
-        const contactLink = document.querySelector(".footer a[href='#contact-popup']");
-        const contactPopup = document.getElementById("contact-popup");
-        const contactCloseBtn = document.querySelector(".contact-close");
+            closeBtn.addEventListener("click", () => {
+                popup.style.display = "none";
+            });
 
-        contactLink.addEventListener("click", (event) => {
-            event.preventDefault();
-            contactPopup.style.display = "block";
-        });
+            const contactLink = document.querySelector(
+                ".footer a[href='#contact-popup']"
+            );
+            const contactPopup = document.getElementById("contact-popup");
+            const contactCloseBtn = document.querySelector(".contact-close");
 
-        contactCloseBtn.addEventListener("click", () => {
-            contactPopup.style.display = "none";
-        });
-    </script>
-</body>
+            contactLink.addEventListener("click", (event) => {
+                event.preventDefault();
+                contactPopup.style.display = "block";
+            });
 
+            contactCloseBtn.addEventListener("click", () => {
+                contactPopup.style.display = "none";
+            });
+        </script>
+    </body>
 </html>
