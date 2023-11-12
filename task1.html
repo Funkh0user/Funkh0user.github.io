@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Island Vacation Retreats</title>
         <style>
-            /* Styles from the original code... */
             body {
                 font-family: Arial, sans-serif;
                 margin: 0;
@@ -125,8 +124,7 @@
             }
 
             .transparent-btn {
-                background-color: #fff;
-                opacity: .7;
+                background-color: rgba(255, 255, 255, 0.7);
                 padding: 1vw 1.5vw;
                 color: #333;
             }
@@ -161,7 +159,7 @@
                 width: 100%;
                 height: 100%;
                 background-color: rgba(0, 0, 0, 0.7);
-                z-index: 2;
+                z-index: 999;
             }
 
             .popup-content {
@@ -171,10 +169,13 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                background-color: #333;
+                background-color: #bde3ff;
                 padding: 20px;
                 text-align: center;
                 font-size: 2vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .popup-links {
@@ -218,6 +219,25 @@
                 padding: 10px 15px;
                 font-size: 1em;
             }
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                overflow: auto;
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 15px;
+                right: 35px;
+                font-size: 40px;
+                color: white;
+                cursor: pointer;
+            }
             /* Background Images for each card */
             .card[data-topic="festivals"] {
                 background-image: url("./festivals.jpg");
@@ -254,12 +274,15 @@
                 background-size: cover;
                 background-position: center center;
             }
+            .popup-list {
+                list-style-type: none;
+            }
         </style>
     </head>
 
     <body>
         <!-- Navigation -->
-        <div id="nav" class="nav">
+        <div id="nav-links" class="nav">
             <div class="nav-links">
                 <a href="#rec">Recreation</a>
                 <a href="#transpo">Transportation</a>
@@ -277,18 +300,33 @@
             <svg width="100%" height="400px" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <mask id="textMask">
-                        <rect width="100%" height="400px" fill="white"/>
-                        <text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="25em" font-weight="bold" fill="black">Taniti</text>
+                        <rect width="100%" height="400px" fill="white" />
+                        <text
+                            x="50%"
+                            y="50%"
+                            dy=".35em"
+                            text-anchor="middle"
+                            font-size="25em"
+                            font-weight="bold"
+                            fill="black"
+                        >
+                            Taniti
+                        </text>
                     </mask>
                 </defs>
-                <rect width="100%" height="400px" fill="#ffcd29" mask="url(#textMask)"/>
+                <rect
+                    width="100%"
+                    height="400px"
+                    fill="#ffcd29"
+                    mask="url(#textMask)"
+                />
             </svg>
         </div>
 
-        <!-- Popup for Hamburger Menu -->
-        <div id="popup" class="popup">
+        <!-- Popup for Nav Menu -->
+        <div id="nav-popup" class="popup">
             <div class="popup-content">
-                <span class="close">&times;</span>
+                <span class="close" onclick="closeModal('nav-popup')">&times;</span>
                 <ul class="popup-links">
                     <li><a href="#rec">Recreation</a></li>
                     <li><a href="#transpo">Transportation</a></li>
@@ -300,7 +338,7 @@
         <!-- Popup for Contact -->
         <div id="contact-popup" class="popup">
             <div class="popup-content">
-                <span class="close contact-close">&times;</span>
+                <span class="close contact-close" onclick="closeModal('contact-popup')">&times;</span>
                 <form class="contact-form">
                     <input type="text" placeholder="Name" required />
                     <input type="email" placeholder="Email" required />
@@ -316,151 +354,264 @@
             <div id="rec" class="article-section">
                 <div class="card-container">
                     <div class="card black-border" data-topic="beaches">
-                        <div class="transparent-btn">Beautiful Beaches</div>
+                        <div
+                            class="transparent-btn"
+                            data-toggle="modal"
+                            data-target="#beachesModal"
+                            onclick="openModal('beaches-modal')"
+                        >
+                            Beautiful Beaches
+                        </div>
                     </div>
-                    <p class="card-text">
-                        Discover pristine beaches with golden sands and
-                        crystal-clear waters that beckon you to relax and
-                        unwind.
-                    </p>
-                    <p class="card-text">
-                        Explore hidden coves and enjoy water sports like
-                        snorkeling and surfing in the island's serene coastline.
-                    </p>
-                    <p class="card-text">
-                        Our island offers some of the most breathtaking beaches
-                        where you can soak up the sun and enjoy the sea breeze.
-                    </p>
-                    <p class="card-text">
-                        From family-friendly shores to secluded getaways, our
-                        island has a beach for every traveler's taste.
-                    </p>
+                    <!-- Modal for Beaches -->
+                    <div id="beaches-modal" class="modal">
+                        <!-- Modal Content Here -->
+                        <div class="popup-content">
+                            <span class="close contact-close" onclick="closeModal('beaches-modal')">&times;</span>
+                            <ul class="popup-list">
+                                <li><strong>Coral Cove Sunrise</strong></li>
+                                <li><strong>Azure Breeze Bay</strong></li>
+                                <li><strong>Whispering Palms Shore</strong></li>
+                                <li><strong>Golden Sands Retreat</strong></li>
+                                <li><strong>Mystic Tide Lagoon</strong></li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                    <!-- ...Rest of the content for Beautiful Beaches... -->
                 </div>
 
                 <div class="card-container">
                     <div class="card black-border" data-topic="restaurants">
-                        <div class="transparent-btn">Exquisite Cuisine</div>
+                        <div
+                            class="transparent-btn"
+                            data-toggle="modal"
+                            data-target="#restaurantsModal"
+                            onclick="openModal('restaurants-modal')"
+                        >
+                            Exquisite Cuisine
+                        </div>
                     </div>
-                    <p class="card-text">
-                        Indulge in a culinary journey through our island's
-                        diverse cuisine, featuring fresh seafood and tropical
-                        flavors.
-                    </p>
-                    <p class="card-text">
-                        Savor delicious dishes prepared by local chefs, offering
-                        a taste of the island's rich culinary heritage.
-                    </p>
-                    <p class="card-text">
-                        From beachside cafes to fine dining restaurants, our
-                        island boasts a variety of dining experiences to satisfy
-                        your palate.
-                    </p>
-                    <p class="card-text">
-                        Don't miss the opportunity to try our signature dishes,
-                        infused with island spices and international influences.
-                    </p>
+                    <!-- Modal for Restaurants -->
+                    <div id="restaurants-modal" class="modal">
+                            <!-- Modal Content Here -->
+                            <div class="popup-content">
+                                <span class="close contact-close" onclick="closeModal('restaurants-modal')">&times;</span>
+                                <ul class="popup-list">
+                                    <li><strong>Azure Waves Seafood Bistro</strong></li>
+                                    <li><strong>Volcano Spice Grill</strong></li>
+                                    <li><strong>Jungle Canopy Café</strong></li>
+                                    <li><strong>Starlight Lounge & Sushi Bar</strong></li>
+                                    <li><strong>Mystic Lagoon Vegetarian Oasis</strong></li>
+                                </ul>
+                                
+                            </div>
+
+                    </div>
+
+                    <!-- ...Rest of the content for Exquisite Cuisine... -->
                 </div>
 
                 <div class="card-container">
                     <div class="card black-border" data-topic="festivals">
-                        <div class="transparent-btn"> Vibrant Festivals</div>
+                        <div
+                            class="transparent-btn"
+                            data-toggle="modal"
+                            data-target="#festivalsModal"
+                            onclick="openModal('festivals-modal')"
+                        >
+                            Vibrant Festivals
+                        </div>
                     </div>
-                    <p class="card-text">
-                        Immerse yourself in the island's vibrant culture by
-                        joining local festivals and celebrations.
-                    </p>
-                    <p class="card-text">
-                        Experience traditional dance, music, and art that
-                        showcase the unique heritage of our island.
-                    </p>
-                    <p class="card-text">
-                        Our festivals bring the community together, creating
-                        unforgettable memories and a sense of belonging.
-                    </p>
-                    <p class="card-text">
-                        Discover the colorful traditions that make our island a
-                        hub of cultural diversity and joyous festivities.
-                    </p>
+                    <!-- Modal for Festivals -->
+                        <div id="festivals-modal" class="modal">
+                            <!-- Modal Content Here -->
+                            <div class="popup-content">
+                                <span class="close contact-close" onclick="closeModal('festivals-modal')">&times;</span>
+                                <ul class="popup-list">
+                                    <li>Moonlight Music Fiesta</li>
+                                    <li>Harbor Lantern Festival</li>
+                                    <li>Coral Reef Art Parade</li>
+                                    <li>Starlit Cinema Nights</li>
+                                    <li>Tropical Harvest Carnival</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    <!-- ...Rest of the content for Vibrant Festivals... -->
                 </div>
             </div>
 
-            <!-- Article Section 3 with blue backgrounds -->
             <div id="transpo" class="article-section">
                 <div class="card blue-background">
-                    <div class="white-btn">Bus Tours</div>
+                    <div
+                        class="white-btn"
+                        data-toggle="modal"
+                        data-target="#busToursModal"
+                        onclick="openModal('bus-tours-modal')"
+                    >
+                        Bus Tours
+                    </div>
                 </div>
-                <div class="card blue-background">
-                    <div class="white-btn">Car Rentals</div>
+                <!-- Modal for Bus Tours -->
+                <div id="bus-tours-modal" class="modal">
+                    <!-- Modal Content Here -->
+                    <div class="popup-content">
+                        <span class="close contact-close" onclick="closeModal('bus-tours-modal')">&times;</span>
+                        <ul class="popup-list">
+                            <li>Sunrise Coast Explorer</li>
+                            <li>Taniti Cultural Journey</li>
+                            <li>Mystic Mountain Adventure</li>
+                            <li>Historic Village Tour</li>
+                            <li>Eco-Wildlife Expedition</li>
+                        </ul>
+                        
+                    </div>
                 </div>
+
                 <div class="card blue-background">
-                    <div class="white-btn">Train Adventures</div>
+                    <div
+                        class="white-btn"
+                        data-toggle="modal"
+                        data-target="#carRentalsModal"
+                        onclick="openModal('car-rentals-modal')"
+                    >
+                        Car Rentals
+                    </div>
+                </div>
+                <!-- Modal for Car Rentals -->
+                <div id="car-rentals-modal" class="modal">
+                    <!-- Modal Content Here -->
+                    <div class="popup-content">
+                        <span class="close contact-close" onclick="closeModal('car-rentals-modal')">&times;</span>
+                        <ul class="popup-list">
+                            <li>Sunrise Coast Explorer</li>
+                            <li>Taniti Cultural Journey</li>
+                            <li>Mystic Mountain Adventure</li>
+                            <li>Historic Village Tour</li>
+                            <li>Eco-Wildlife Expedition</li>
+                        </ul>                        
+                    </div>
+                </div>
+
+                <div class="card blue-background">
+                    <div
+                        class="white-btn"
+                        data-toggle="modal"
+                        data-target="#trainAdventuresModal"
+                        onclick="openModal('train-adventures-modal')"
+                    >
+                        Train Adventures
+                    </div>
+                </div>
+                <!-- Modal for Train Adventures -->
+                <div id="train-adventures-modal" class="modal">
+                    <!-- Modal Content Here -->
+                    <div class="popup-content">
+                        <span class="close contact-close" onclick="closeModal('train-adventures-modal')">&times;</span>
+                        <ul class="popup-list">
+                            <li>Scenic Coastline Express</li>
+                            <li>Highland Explorer Line</li>
+                            <li>Tropical Rainforest Route</li>
+                            <li>Ancient Ruins Rail Journey</li>
+                            <li>Midnight Star Gazer</li>
+                        </ul>              
+                    </div>
                 </div>
             </div>
 
             <div id="lodging" class="article-section">
                 <div class="card-container">
-                    <div class="card black-border white-btn" data-topic="hotels">
-                    <div class="transparent-btn">Luxury Resorts</div>
+                    <div
+                        class="card black-border white-btn"
+                        data-topic="hotels"
+                    >
+                        <div
+                            class="transparent-btn"
+                            data-toggle="modal"
+                            data-target="#luxuryResortsModal"
+                            onclick="openModal('luxury-resorts-modal')"
+                        >
+                            Luxury Resorts
+                        </div>
                     </div>
-                    <p class="card-text">
-                        Experience the epitome of luxury and comfort at our
-                        island's world-class resorts.
-                    </p>
-                    <p class="card-text">
-                        Enjoy top-notch amenities, stunning views, and
-                        personalized service for an unforgettable stay.
-                    </p>
-                    <p class="card-text">
-                        Relax in style, surrounded by lush landscapes and
-                        exclusive accommodations that cater to your every need.
-                    </p>
-                    <p class="card-text">
-                        Our luxury resorts redefine island living, providing a
-                        sanctuary of relaxation and indulgence.
-                    </p>
+                    <!-- Modal for Luxury Resorts -->
+                    <div id="luxury-resorts-modal" class="modal">
+                        <!-- Modal Content Here -->
+                        <div class="popup-content">
+                            <span class="close contact-close" onclick="closeModal('luxury-resorts-modal')">&times;</span>
+                            <ul class="popup-list">
+                                <li>Oceanview Palace Retreat</li>
+                                <li>Sunset Serenity Resort</li>
+                                <li>Emerald Bay Estates</li>
+                                <li>Taniti Cliffside Villas</li>
+                                <li>Celestial Spa & Resort</li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+
+                    <!-- ...Rest of the content for Luxury Resorts... -->
                 </div>
 
                 <div class="card-container">
                     <div class="card black-border" data-topic="hostels">
-                        <div class="transparent-btn">Cozy Villas</div>
+                        <div
+                            class="transparent-btn"
+                            data-toggle="modal"
+                            data-target="#cozyVillasModal"
+                            onclick="openModal('cozy-villas-modal')"
+                        >
+                            Cozy Villas
+                        </div>
                     </div>
-                    <p class="card-text">
-                        Escape to charming villas nestled in the heart of our
-                        island, offering privacy and serenity.
-                    </p>
-                    <p class="card-text">
-                        Unwind in your own oasis, complete with a private pool
-                        and personalized services for a tranquil retreat.
-                    </p>
-                    <p class="card-text">
-                        Our cozy villas provide a home away from home,
-                        surrounded by natural beauty and tranquility.
-                    </p>
-                    <p class="card-text">
-                        Experience the perfect blend of comfort and nature in
-                        our island's idyllic villa accommodations.
-                    </p>
+                    <!-- Modal for Cozy Villas -->
+                    <div id="cozy-villas-modal" class="modal">
+                        <!-- Modal Content Here -->
+                        <div class="popup-content">
+                            <span class="close contact-close" onclick="closeModal('cozy-villas-modal')">&times;</span>
+                            <ul class="popup-list">
+                                <li>Seabreeze Cottage Enclave</li>
+                                <li>Whispering Palms Hideaway</li>
+                                <li>Lagoon View Bungalows</li>
+                                <li>Rainforest Nest Villas</li>
+                                <li>Starlit Beach Houses</li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+
+                    <!-- ...Rest of the content for Cozy Villas... -->
                 </div>
+
                 <div class="card-container">
                     <div class="card black-border" data-topic="camping">
-                        <div class="transparent-btn">Beachfront Campsites</div>
+                        <div
+                            class="transparent-btn"
+                            data-toggle="modal"
+                            data-target="#beachfrontCampsitesModal"
+                            onclick="openModal('beachfront-campsites-modal')"
+                        >
+                            Beachfront Campsites
+                        </div>
                     </div>
-                    <p class="card-text">
-                        Connect with nature and camp under the stars at our
-                        island's picturesque beachfront campsites.
-                    </p>
-                    <p class="card-text">
-                        Fall asleep to the sound of the ocean and wake up to
-                        breathtaking sunrises over the sea.
-                    </p>
-                    <p class="card-text">
-                        Our campsites offer a unique way to experience the
-                        island's natural beauty and serenity.
-                    </p>
-                    <p class="card-text">
-                        Embark on an adventure, roast marshmallows by the
-                        campfire, and create unforgettable memories.
-                    </p>
+                    <!-- Modal for Beachfront Campsites -->
+                    <div id="beachfront-campsites-modal" class="modal">
+                        <!-- Modal Content Here -->
+                        <div class="popup-content">
+                            <span class="close contact-close" onclick="closeModal('beachfront-campsites-modal')">&times;</span>
+                            <ul class="popup-list">
+                                <li>Duneside Wilderness Camp</li>
+                                <li>Azure Shores Camping Ground</li>
+                                <li>Moonlit Bay Campsite</li>
+                                <li>Seashell Beach Camp</li>
+                                <li>Coral Edge Tents & Lodges</li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+
+                    <!-- ...Rest of the content for Beachfront Campsites... -->
                 </div>
             </div>
         </div>
@@ -481,32 +632,36 @@
         </div>
 
         <script>
-            const hamburgerMenu = document.querySelector(".hamburger-menu");
-            const popup = document.getElementById("popup");
-            const closeBtn = document.querySelector(".close");
-
-            hamburgerMenu.addEventListener("click", () => {
-                popup.style.display = "block";
-            });
-
-            closeBtn.addEventListener("click", () => {
-                popup.style.display = "none";
-            });
-
-            const contactLink = document.querySelector(
-                ".footer a[href='#contact-popup']"
-            );
+            const navLinks = document.getElementById("nav-links");
+            const navPopup = document.getElementById("nav-popup");
             const contactPopup = document.getElementById("contact-popup");
-            const contactCloseBtn = document.querySelector(".contact-close");
 
-            contactLink.addEventListener("click", (event) => {
-                event.preventDefault();
-                contactPopup.style.display = "block";
+            // Function to show an element
+            function showElement(element) {
+                console.log('element: ', element);
+                element.style.display = "block";
+            }
+
+            // Function to hide an element
+            function hideElement(element) {
+                element.style.display = "none";
+            }
+
+            // Open Hamburger Menu
+            navLinks.addEventListener("click", () => {
+                showElement(navPopup);
             });
 
-            contactCloseBtn.addEventListener("click", () => {
-                contactPopup.style.display = "none";
-            });
+            // Generic function to toggle modals
+            function openModal(topic) {
+                console.log(topic);
+                showElement(document.getElementById(topic));
+            }
+
+            function closeModal(topic) {
+                console.log(topic);
+                hideElement(document.getElementById(topic));
+            }
         </script>
     </body>
 </html>
