@@ -288,7 +288,7 @@
                 <a href="#transpo">Transportation</a>
                 <a href="#lodging">Lodging</a>
             </div>
-            <div class="hamburger-menu">
+            <div id="hamburger-menu" class="hamburger-menu">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -326,7 +326,9 @@
         <!-- Popup for Nav Menu -->
         <div id="nav-popup" class="popup">
             <div class="popup-content">
-                <span class="close" onclick="closeModal('nav-popup')">&times;</span>
+                <span class="close" onclick="closeModal('nav-popup')"
+                    >&times;</span
+                >
                 <ul class="popup-links">
                     <li><a href="#rec">Recreation</a></li>
                     <li><a href="#transpo">Transportation</a></li>
@@ -338,7 +340,11 @@
         <!-- Popup for Contact -->
         <div id="contact-popup" class="popup">
             <div class="popup-content">
-                <span class="close contact-close" onclick="closeModal('contact-popup')">&times;</span>
+                <span
+                    class="close contact-close"
+                    onclick="closeModal('contact-popup')"
+                    >&times;</span
+                >
                 <form class="contact-form">
                     <input type="text" placeholder="Name" required />
                     <input type="email" placeholder="Email" required />
@@ -367,7 +373,11 @@
                     <div id="beaches-modal" class="modal">
                         <!-- Modal Content Here -->
                         <div class="popup-content">
-                            <span class="close contact-close" onclick="closeModal('beaches-modal')">&times;</span>
+                            <span
+                                class="close contact-close"
+                                onclick="closeModal('beaches-modal')"
+                                >&times;</span
+                            >
                             <ul class="popup-list">
                                 <li><strong>Coral Cove Sunrise</strong></li>
                                 <li><strong>Azure Breeze Bay</strong></li>
@@ -375,7 +385,6 @@
                                 <li><strong>Golden Sands Retreat</strong></li>
                                 <li><strong>Mystic Tide Lagoon</strong></li>
                             </ul>
-                            
                         </div>
                     </div>
                     <!-- ...Rest of the content for Beautiful Beaches... -->
@@ -394,19 +403,31 @@
                     </div>
                     <!-- Modal for Restaurants -->
                     <div id="restaurants-modal" class="modal">
-                            <!-- Modal Content Here -->
-                            <div class="popup-content">
-                                <span class="close contact-close" onclick="closeModal('restaurants-modal')">&times;</span>
-                                <ul class="popup-list">
-                                    <li><strong>Azure Waves Seafood Bistro</strong></li>
-                                    <li><strong>Volcano Spice Grill</strong></li>
-                                    <li><strong>Jungle Canopy Café</strong></li>
-                                    <li><strong>Starlight Lounge & Sushi Bar</strong></li>
-                                    <li><strong>Mystic Lagoon Vegetarian Oasis</strong></li>
-                                </ul>
-                                
-                            </div>
-
+                        <!-- Modal Content Here -->
+                        <div class="popup-content">
+                            <span
+                                class="close contact-close"
+                                onclick="closeModal('restaurants-modal')"
+                                >&times;</span
+                            >
+                            <ul class="popup-list">
+                                <li>
+                                    <strong>Azure Waves Seafood Bistro</strong>
+                                </li>
+                                <li><strong>Volcano Spice Grill</strong></li>
+                                <li><strong>Jungle Canopy Café</strong></li>
+                                <li>
+                                    <strong
+                                        >Starlight Lounge & Sushi Bar</strong
+                                    >
+                                </li>
+                                <li>
+                                    <strong
+                                        >Mystic Lagoon Vegetarian Oasis</strong
+                                    >
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     <!-- ...Rest of the content for Exquisite Cuisine... -->
@@ -424,20 +445,23 @@
                         </div>
                     </div>
                     <!-- Modal for Festivals -->
-                        <div id="festivals-modal" class="modal">
-                            <!-- Modal Content Here -->
-                            <div class="popup-content">
-                                <span class="close contact-close" onclick="closeModal('festivals-modal')">&times;</span>
-                                <ul class="popup-list">
-                                    <li>Moonlight Music Fiesta</li>
-                                    <li>Harbor Lantern Festival</li>
-                                    <li>Coral Reef Art Parade</li>
-                                    <li>Starlit Cinema Nights</li>
-                                    <li>Tropical Harvest Carnival</li>
-                                </ul>
-
-                            </div>
+                    <div id="festivals-modal" class="modal">
+                        <!-- Modal Content Here -->
+                        <div class="popup-content">
+                            <span
+                                class="close contact-close"
+                                onclick="closeModal('festivals-modal')"
+                                >&times;</span
+                            >
+                            <ul class="popup-list">
+                                <li>Moonlight Music Fiesta</li>
+                                <li>Harbor Lantern Festival</li>
+                                <li>Coral Reef Art Parade</li>
+                                <li>Starlit Cinema Nights</li>
+                                <li>Tropical Harvest Carnival</li>
+                            </ul>
                         </div>
+                    </div>
                     <!-- ...Rest of the content for Vibrant Festivals... -->
                 </div>
             </div>
@@ -457,7 +481,11 @@
                 <div id="bus-tours-modal" class="modal">
                     <!-- Modal Content Here -->
                     <div class="popup-content">
-                        <span class="close contact-close" onclick="closeModal('bus-tours-modal')">&times;</span>
+                        <span
+                            class="close contact-close"
+                            onclick="closeModal('bus-tours-modal')"
+                            >&times;</span
+                        >
                         <ul class="popup-list">
                             <li>Sunrise Coast Explorer</li>
                             <li>Taniti Cultural Journey</li>
@@ -465,7 +493,6 @@
                             <li>Historic Village Tour</li>
                             <li>Eco-Wildlife Expedition</li>
                         </ul>
-                        
                     </div>
                 </div>
 
@@ -483,14 +510,18 @@
                 <div id="car-rentals-modal" class="modal">
                     <!-- Modal Content Here -->
                     <div class="popup-content">
-                        <span class="close contact-close" onclick="closeModal('car-rentals-modal')">&times;</span>
+                        <span
+                            class="close contact-close"
+                            onclick="closeModal('car-rentals-modal')"
+                            >&times;</span
+                        >
                         <ul class="popup-list">
                             <li>Sunrise Coast Explorer</li>
                             <li>Taniti Cultural Journey</li>
                             <li>Mystic Mountain Adventure</li>
                             <li>Historic Village Tour</li>
                             <li>Eco-Wildlife Expedition</li>
-                        </ul>                        
+                        </ul>
                     </div>
                 </div>
 
@@ -508,14 +539,18 @@
                 <div id="train-adventures-modal" class="modal">
                     <!-- Modal Content Here -->
                     <div class="popup-content">
-                        <span class="close contact-close" onclick="closeModal('train-adventures-modal')">&times;</span>
+                        <span
+                            class="close contact-close"
+                            onclick="closeModal('train-adventures-modal')"
+                            >&times;</span
+                        >
                         <ul class="popup-list">
                             <li>Scenic Coastline Express</li>
                             <li>Highland Explorer Line</li>
                             <li>Tropical Rainforest Route</li>
                             <li>Ancient Ruins Rail Journey</li>
                             <li>Midnight Star Gazer</li>
-                        </ul>              
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -539,7 +574,11 @@
                     <div id="luxury-resorts-modal" class="modal">
                         <!-- Modal Content Here -->
                         <div class="popup-content">
-                            <span class="close contact-close" onclick="closeModal('luxury-resorts-modal')">&times;</span>
+                            <span
+                                class="close contact-close"
+                                onclick="closeModal('luxury-resorts-modal')"
+                                >&times;</span
+                            >
                             <ul class="popup-list">
                                 <li>Oceanview Palace Retreat</li>
                                 <li>Sunset Serenity Resort</li>
@@ -547,7 +586,6 @@
                                 <li>Taniti Cliffside Villas</li>
                                 <li>Celestial Spa & Resort</li>
                             </ul>
-                            
                         </div>
                     </div>
 
@@ -569,7 +607,11 @@
                     <div id="cozy-villas-modal" class="modal">
                         <!-- Modal Content Here -->
                         <div class="popup-content">
-                            <span class="close contact-close" onclick="closeModal('cozy-villas-modal')">&times;</span>
+                            <span
+                                class="close contact-close"
+                                onclick="closeModal('cozy-villas-modal')"
+                                >&times;</span
+                            >
                             <ul class="popup-list">
                                 <li>Seabreeze Cottage Enclave</li>
                                 <li>Whispering Palms Hideaway</li>
@@ -577,7 +619,6 @@
                                 <li>Rainforest Nest Villas</li>
                                 <li>Starlit Beach Houses</li>
                             </ul>
-                            
                         </div>
                     </div>
 
@@ -599,7 +640,11 @@
                     <div id="beachfront-campsites-modal" class="modal">
                         <!-- Modal Content Here -->
                         <div class="popup-content">
-                            <span class="close contact-close" onclick="closeModal('beachfront-campsites-modal')">&times;</span>
+                            <span
+                                class="close contact-close"
+                                onclick="closeModal('beachfront-campsites-modal')"
+                                >&times;</span
+                            >
                             <ul class="popup-list">
                                 <li>Duneside Wilderness Camp</li>
                                 <li>Azure Shores Camping Ground</li>
@@ -607,7 +652,6 @@
                                 <li>Seashell Beach Camp</li>
                                 <li>Coral Edge Tents & Lodges</li>
                             </ul>
-                            
                         </div>
                     </div>
 
@@ -632,13 +676,13 @@
         </div>
 
         <script>
-            const navLinks = document.getElementById("nav-links");
+            const hamburgerMenu = document.getElementById("hamburger-menu");
             const navPopup = document.getElementById("nav-popup");
             const contactPopup = document.getElementById("contact-popup");
 
             // Function to show an element
             function showElement(element) {
-                console.log('element: ', element);
+                console.log("element: ", element);
                 element.style.display = "block";
             }
 
@@ -647,8 +691,8 @@
                 element.style.display = "none";
             }
 
-            // Open Hamburger Menu
-            navLinks.addEventListener("click", () => {
+            // // Open Hamburger Menu
+            hamburgerMenu.addEventListener("click", () => {
                 showElement(navPopup);
             });
 
